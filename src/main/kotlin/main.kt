@@ -76,7 +76,7 @@ fun main(args: Array<String>) {
         var total: Double = 0.0
         while (j < 5) {
             var p = productos[r.nextInt(12)] // producto
-            var c = r.nextInt().toDouble()
+            var c = r.nextInt(10).toDouble()
             var importe: Double = p.PRECIO * c
             articulos.add(Articulo(p.ID, p.DESCRIPCION, p.PRECIO, c, importe))
             total += importe
