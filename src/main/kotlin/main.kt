@@ -1,5 +1,6 @@
 import com.google.gson.Gson
 import java.io.File
+import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -77,7 +78,8 @@ fun main(args: Array<String>) {
         while (j < 5) {
             var p = productos[r.nextInt(12)] // producto
             var c = r.nextInt(10).toDouble()
-            var importe: Double = p.PRECIO * c
+            var importe: Double = (p.PRECIO * c)
+            importe = DecimalFormat("#.00").format(importe).toDouble()
             articulos.add(Articulo(p.ID, p.DESCRIPCION, p.PRECIO, c, importe))
             total += importe
             j++
@@ -90,7 +92,7 @@ fun main(args: Array<String>) {
                 nombreCliente = cliente.NOMBRE,
                 ciudadFactura = listadoCiudad[r.nextInt(8)],
                 ciudadDespacho = listadoCiudad[r.nextInt(8)],
-                totalFactura = total,
+                totalFactura = DecimalFormat("#.00").format(total).toDouble(),
                 articulos = articulos
         )
 
