@@ -1,4 +1,5 @@
 import com.google.gson.Gson
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -67,7 +68,7 @@ fun main(args: Array<String>) {
 
     var i: Int = 0
     var documentos = ArrayList<Factura>()
-    while (i < 10) {
+    while (i < 500000) {
         var cliente = clientes[r.nextInt(10)]
         // generar articulos a partir de los productos
         var articulos: ArrayList<Articulo> = ArrayList()
@@ -99,6 +100,11 @@ fun main(args: Array<String>) {
 
 
     println(Gson().toJson(documentos))
+
+    File("./input.json").printWriter().use { out ->
+        documentos.forEach {out.println(Gson().toJson(it))}
+    }
+    println("Terminado... !")
 
 
 }
